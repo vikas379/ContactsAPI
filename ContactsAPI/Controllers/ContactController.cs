@@ -27,7 +27,7 @@ namespace ContactsAPI.Controllers
         }
 
         [HttpGet]
-        [Route("{id}")]
+        [Route("{id}", Name ="GetById")]
         [ProducesResponseType(200)]
         [ProducesResponseType(404)]
         public IActionResult GetContactById(int id)
@@ -43,17 +43,55 @@ namespace ContactsAPI.Controllers
         }
 
         [HttpPost]
-        public IActionResult AddContact(AddContact contact)
+        [ProducesResponseType(400)]
+        [ProducesResponseType(201)]
+        public IActionResult AddContact([FromBody] AddContact contact)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            _contactApplication.Add(contact);
+            int createdEntityID = _contactApplication.Add(contact);
 
-            return Ok();
+            return CreatedAtRoute("GetById", new { id = createdEntityID }, _contactApplication.GetById(createdEntityID));
 
+        }
+
+        [HttpPut]
+        [ProducesResponseType(204)]
+        [ProducesResponseType(404)]
+        [ProducesResponseType(400)]
+        public IActionResult UpdateContact([FromBody] UpdateContact contact)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest();
+            }
+
+            int rows = _contactApplication.Update(contact);
+            if(rows == 0)
+            {
+                return NotFound();
+            }
+
+            return NoContent();
+        }
+
+        [HttpDelete]
+        [Route("{id}")]
+        [ProducesResponseType(204)]
+        [ProducesResponseType(404)]
+        public IActionResult DeleteContact(int id)
+        {
+            int noOfRows = _contactApplication.Remove(id);
+
+            if(noOfRows == 0)
+            {
+                return NotFound();
+            }
+
+            return NoContent();
         }
     }
 }

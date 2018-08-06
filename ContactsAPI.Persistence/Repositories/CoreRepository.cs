@@ -29,18 +29,20 @@ namespace ContactsAPI.Persistence.Repositories
 
         public IQueryable<TEntity> GetAll()
         {
-            return dbSet;
+            return dbSet.AsNoTracking();
         }
 
         public TEntity GetById(int id)
         {
-            return dbSet.Find(id);
+            TEntity record = dbSet.Find(id);
+            if(record != null) dbContext.Entry(record).State = EntityState.Detached;
+            return record;
+ 
         }
 
         public void Add(TEntity obj)
         {
             dbSet.Add(obj);
-            dbContext.Entry(obj).Property("CreationDate").OriginalValue = DateTime.UtcNow;
         }
 
         public void Update(TEntity obj)

@@ -33,22 +33,49 @@ namespace ContactsAPI.Application
             return _mapper.Map<Contacts>(contact);
         }
 
-        public void Add(AddContact contact)
+        public int Add(AddContact contact)
         {
             Contact contactDto = new Contact(0, contact.FirstName, contact.MiddleName, contact.LastName, contact.Email,
                 contact.PhoneNumber, contact.Status, contact.CreatorRID, 0);
+            contactDto.CreationDate = DateTime.UtcNow;
+
             _contactRepository.Add(contactDto);
             int rowsAffected = _contactRepository.SaveChanges();
+
+            return contactDto.Id;
+
         }
 
-        public void Update()
+        public int Update(UpdateContact contact)
         {
-            throw new NotImplementedException();
+            Contact contactDto = _contactRepository.GetById(contact.Id);
+
+            if(contactDto == null)
+            {
+                return 0;
+            }
+
+            Contact updateContact = new Contact(contact.Id, contact.FirstName, contact.MiddleName, contact.LastName, contact.Email,
+                contact.PhoneNumber, contact.Status, contactDto.CreatorRID, contact.ModifierRID);
+            updateContact.ModificationDate = DateTime.UtcNow;
+
+            _contactRepository.Update(updateContact);
+            return _contactRepository.SaveChanges();
+
         }
 
-        public void Remove(int id)
+        public int Remove(int id)
         {
-            throw new NotImplementedException();
+            var contact = _contactRepository.GetById(id);
+
+            if(contact == null)
+            {
+                return 0;
+            }
+
+            _contactRepository.Remove(id);
+            return _contactRepository.SaveChanges();
+
         }
 
     }

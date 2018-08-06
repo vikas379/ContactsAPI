@@ -11,10 +11,10 @@ namespace ContactsAPI.Application.Contract
 
         Contacts GetById(int id);
 
-        void Add(AddContact contact);
+        int Add(AddContact contact);
 
-        void Update();
+        int Update(UpdateContact contact);
 
-        void Remove(int id);
+        int Remove(int id);
     }
 }
