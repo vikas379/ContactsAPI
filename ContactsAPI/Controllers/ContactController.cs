@@ -70,10 +70,10 @@ namespace ContactsAPI.Controllers
             }
 
             int rows = _contactApplication.Update(contact);
-            if(rows == 0)
-            {
-                return NotFound();
-            }
+            //if(rows == 0)
+            //{
+            //    return NotFound();
+            //}
 
             return NoContent();
         }
@@ -86,10 +86,10 @@ namespace ContactsAPI.Controllers
         {
             int noOfRows = _contactApplication.Remove(id);
 
-            if(noOfRows == 0)
-            {
-                return NotFound();
-            }
+            //if(noOfRows == 0)
+            //{
+            //    return NotFound();
+            //}
 
             return NoContent();
         }

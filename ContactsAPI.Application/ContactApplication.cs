@@ -2,6 +2,7 @@
 using AutoMapper.QueryableExtensions;
 using ContactsAPI.Application.Contract;
 using ContactsAPI.Application.Contract.Contracts;
+using ContactsAPI.Application.Exceptions;
 using ContactsAPI.DomainModel;
 using ContactsAPI.Persistence.Contract;
 using System;
@@ -35,6 +36,16 @@ namespace ContactsAPI.Application
 
         public int Add(AddContact contact)
         {
+            if(_contactRepository.GetByEmail(contact.Email) != null)
+            {
+                throw new DuplicateEmailException();
+            }
+
+            if (_contactRepository.GetByPhoneNumber(contact.PhoneNumber) != null)
+            {
+                throw new DuplicatePhoneNumber();
+            }
+
             Contact contactDto = new Contact(0, contact.FirstName, contact.MiddleName, contact.LastName, contact.Email,
                 contact.PhoneNumber, contact.Status, contact.CreatorRID, 0);
             contactDto.CreationDate = DateTime.UtcNow;
@@ -52,8 +63,21 @@ namespace ContactsAPI.Application
 
             if(contactDto == null)
             {
-                return 0;
+                throw new NotFoundException();
             }
+
+            var contactByEmail = _contactRepository.GetByEmail(contact.Email);
+            if (contactByEmail != null && contactByEmail.Id != contactDto.Id )
+            {
+                throw new DuplicateEmailException();
+            }
+
+            var contactByPhone = _contactRepository.GetByPhoneNumber(contact.PhoneNumber);
+            if (contactByPhone != null && contactByPhone.Id != contactDto.Id)
+            {
+                throw new DuplicatePhoneNumber();
+            }
+
 
             Contact updateContact = new Contact(contact.Id, contact.FirstName, contact.MiddleName, contact.LastName, contact.Email,
                 contact.PhoneNumber, contact.Status, contactDto.CreatorRID, contact.ModifierRID);
@@ -70,7 +94,7 @@ namespace ContactsAPI.Application
 
             if(contact == null)
             {
-                return 0;
+                throw new NotFoundException();
             }
 
             _contactRepository.Remove(id);

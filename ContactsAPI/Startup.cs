@@ -52,6 +52,13 @@ namespace ContactsAPI
                     Description = "Contact API Explorer"
                 });
             });
+
+            services.AddMvc(
+                config =>
+                {
+                    config.Filters.Add(typeof(ExceptionFilter));
+                }
+            );
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

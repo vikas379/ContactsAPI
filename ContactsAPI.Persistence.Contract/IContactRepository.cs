@@ -7,5 +7,9 @@ namespace ContactsAPI.Persistence.Contract
 {
     public interface IContactRepository : ICoreRepository<Contact>
     {
+        Contact GetByEmail(string email);
+
+        Contact GetByPhoneNumber(string phone);
+
     }
 }
