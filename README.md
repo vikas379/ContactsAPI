@@ -41,7 +41,7 @@ git clone https://github.com/vikas379/ContactsAPI.git
 ```
 update-database
 ```
-7. Now run the API by using the command * Cltr + F5*
+7. Now run the API by using using *__CLTR + F5__*
 8. Application will get launched in your browser and Swagger Explorer will open or You can browse the API from [Azure App Service](http://contactsapi.azurewebsites.net/)
 
 
