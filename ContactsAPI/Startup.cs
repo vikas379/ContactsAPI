@@ -4,10 +4,14 @@ using System.Linq;
 using System.Threading.Tasks;
 using ContactsAPI.Application;
 using ContactsAPI.Application.Contract;
+using ContactsAPI.Application.Contract.Contracts;
 using ContactsAPI.configuration;
 using ContactsAPI.Persistence.Contract;
 using ContactsAPI.Persistence.DbContexts;
 using ContactsAPI.Persistence.Repositories;
+using ContactsAPI.Validation;
+using FluentValidation;
+using FluentValidation.AspNetCore;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
@@ -41,6 +45,9 @@ namespace ContactsAPI
             services.AddScoped<IContactApplication, ContactApplication>();
             services.AddScoped<IContactRepository, ContactRepository>();
 
+            services.AddScoped<IValidator<AddContact>, AddContactValidator>();
+
+
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
 
             services.AddSwaggerGen(swg =>
@@ -53,12 +60,21 @@ namespace ContactsAPI
                 });
             });
 
-            services.AddMvc(
-                config =>
-                {
-                    config.Filters.Add(typeof(ExceptionFilter));
-                }
-            );
+            //services.AddMvc(
+            //    config =>
+            //    {
+            //        config.Filters.Add(typeof(ExceptionFilter));
+            //    }
+            //);
+
+            services.AddMvc(setup =>
+            {
+
+            }).AddFluentValidation();
+
+            services.AddTransient<IValidator<AddContact>, AddContactValidator>();
+            services.AddTransient<IValidator<UpdateContact>, UpdateContactValidator>();
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

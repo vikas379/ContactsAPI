@@ -3,27 +3,27 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27703.2047
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ContactsAPI", "ContactsAPI\ContactsAPI.csproj", "{3422CA91-40BF-4E43-9682-37D6B812B48F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ContactsAPI", "ContactsAPI\ContactsAPI.csproj", "{3422CA91-40BF-4E43-9682-37D6B812B48F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ContactsAPI.Contract", "ContactsAPI.Contract\ContactsAPI.Contract.csproj", "{B53002EF-320E-4819-B3FB-5054C6AFC8CB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ContactsAPI.Contract", "ContactsAPI.Contract\ContactsAPI.Contract.csproj", "{B53002EF-320E-4819-B3FB-5054C6AFC8CB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ContactsAPI.Application", "ContactsAPI.Application\ContactsAPI.Application.csproj", "{68DEC6F0-346B-4717-B142-AE366D1E2712}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ContactsAPI.Application", "ContactsAPI.Application\ContactsAPI.Application.csproj", "{68DEC6F0-346B-4717-B142-AE366D1E2712}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1-Service", "1-Service", "{311CEF3A-580C-4C89-AD3E-D54BCB0C4DD6}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2-Application", "2-Application", "{812AE6BA-392E-469F-9232-2D035C6C7E25}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ContactsAPI.Application.Contract", "ContactsAPI.Application.Contract\ContactsAPI.Application.Contract.csproj", "{802803E9-A76C-4730-BF41-18832B6D04C1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ContactsAPI.Application.Contract", "ContactsAPI.Application.Contract\ContactsAPI.Application.Contract.csproj", "{802803E9-A76C-4730-BF41-18832B6D04C1}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3-Persistence", "3-Persistence", "{EDA9B7F9-04CE-4BCD-BF62-D914E1076A69}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ContactsAPI.Persistence", "ContactsAPI.Persistence\ContactsAPI.Persistence.csproj", "{E371CB4C-42BE-4A18-A9BB-9109680E45C5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ContactsAPI.Persistence", "ContactsAPI.Persistence\ContactsAPI.Persistence.csproj", "{E371CB4C-42BE-4A18-A9BB-9109680E45C5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ContactsAPI.Persistence.Contract", "ContactsAPI.Persistence.Contract\ContactsAPI.Persistence.Contract.csproj", "{A1FDF6BB-4E56-4039-9C83-68B2C980B8DA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ContactsAPI.Persistence.Contract", "ContactsAPI.Persistence.Contract\ContactsAPI.Persistence.Contract.csproj", "{A1FDF6BB-4E56-4039-9C83-68B2C980B8DA}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4-Domain", "4-Domain", "{FAB9421C-C9E5-40E9-9B19-FAA662FB7A66}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ContactsAPI.DomainModel", "ContactsAPI.DomainModel\ContactsAPI.DomainModel.csproj", "{67F2929C-30CC-4129-A4AA-AA48EF469AC3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ContactsAPI.DomainModel", "ContactsAPI.DomainModel\ContactsAPI.DomainModel.csproj", "{67F2929C-30CC-4129-A4AA-AA48EF469AC3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
