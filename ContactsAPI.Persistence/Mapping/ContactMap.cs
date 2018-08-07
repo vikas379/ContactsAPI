@@ -30,7 +30,7 @@ namespace ContactsAPI.Persistence.Mapping
             builder.Property(item => item.LastName).HasColumnType("VARCHAR(30)").IsRequired();
             builder.Property(item => item.Email).HasColumnType("VARCHAR(100)").IsRequired();
             builder.Property(item => item.PhoneNumber).HasColumnType("VARCHAR(30)").IsRequired();
-            builder.Property(item => item.Status);
+            builder.Property(item => item.Status).HasColumnType("VARCHAR(10)").IsRequired();
             builder.Property(item => item.CreatorRID).IsRequired();
             builder.Property(item => item.CreationDate).IsRequired();
         }

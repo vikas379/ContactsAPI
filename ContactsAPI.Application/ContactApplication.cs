@@ -81,6 +81,7 @@ namespace ContactsAPI.Application
 
             Contact updateContact = new Contact(contact.Id, contact.FirstName, contact.MiddleName, contact.LastName, contact.Email,
                 contact.PhoneNumber, contact.Status, contactDto.CreatorRID, contact.ModifierRID);
+            updateContact.CreationDate = contactDto.CreationDate;
             updateContact.ModificationDate = DateTime.UtcNow;
 
             _contactRepository.Update(updateContact);

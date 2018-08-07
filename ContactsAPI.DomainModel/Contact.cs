@@ -6,7 +6,7 @@ namespace ContactsAPI.DomainModel
 {
     public class Contact: Entity
     {
-        public Contact(int id, string firstName, string middleName, string lastName, string email, string phoneNumber, bool status, int createorRID, int modifierRID)
+        public Contact(int id, string firstName, string middleName, string lastName, string email, string phoneNumber, string status, int createorRID, int modifierRID)
         {
             Id = id;
             FirstName = firstName;
@@ -62,7 +62,7 @@ namespace ContactsAPI.DomainModel
         /// <value>
         ///   <c>true</c> if status; otherwise, <c>false</c>.
         /// </value>
-        public bool Status { get; set; }
+        public string Status { get; set; }
 
     }
 }
