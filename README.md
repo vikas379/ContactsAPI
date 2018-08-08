@@ -14,6 +14,7 @@ The Application is divided into layers
 * ASP .NET Core 2.1
 * ASP .NET Core Web API 2.1
 * Entity Framework Core 2.1.1
+* .NET Core Native DI
 * Fluent Validator
 * AutoMapper
 * Swagger UI
